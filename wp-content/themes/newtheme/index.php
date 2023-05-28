@@ -52,7 +52,7 @@ get_header();
 
                 </div>
             </div>
-            <!-- Portfolio Modal 1-->
+            <!-- Portfolio Modal 01-->
             <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1"
                 aria-hidden="true">
                 <div class="modal-dialog modal-xl">
