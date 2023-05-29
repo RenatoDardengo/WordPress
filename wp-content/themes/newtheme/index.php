@@ -15,7 +15,24 @@
  */
 get_header();
 ?>
-
+<!-- Masthead-->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/avataaars.svg"
+            alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Desenvolvedor full-stack</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Web - Desktop </p>
+    </div>
+</header>
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
@@ -30,7 +47,7 @@ get_header();
 
         <div class="row">
            <?php
-           $args = array('posts_per_page' => 2, 'post_type' => 'post');
+           $args = array('posts_per_page' => 3, 'post_type' => 'post');
            $the_query_post = new WP_Query($args);
 
            if ($the_query_post->have_posts()) {
@@ -93,8 +110,13 @@ get_header();
             $i++; }
            }
            ?>
-        </div>
 
+        </div>
+        
+
+    </div>
+    <div class="text-center">
+        <a href="habilidades"class="btn btn-primary"style="text-align:center;margin-top:20px">Ver mais</a>
     </div>
 
 
@@ -104,7 +126,7 @@ get_header();
 <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
         <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-white">Sobre</h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -123,19 +145,13 @@ get_header();
                     and add your email address to the contact form to make it fully functional!</p>
             </div>
         </div>
-        <!-- About Section Button-->
-        <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                <i class="fas fa-download me-2"></i>
-                Free Download!
-            </a>
-        </div>
+        
     </div>
 </section>
 <section class="page-section" id="contact">
     <div class="container">
         <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Fale comigo</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
