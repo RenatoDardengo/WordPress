@@ -16,6 +16,7 @@
 get_header();
 ?>
 
+
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
@@ -27,34 +28,37 @@ get_header();
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-
+        <!-- Portfolio Grid Items-->
+        <!-- o If procurar se tem posts padrão. Se encontrar, entrará no loop enquanto estiver post -->
+        
         <div class="row">
-           <?php
-           $args = array('posts_per_page' => 2, 'post_type' => 'post');
-           $the_query_post = new WP_Query($args);
-
-           if ($the_query_post->have_posts()) {
-               $i = 1;
-               while ($the_query_post->have_posts()) {
-                   $the_query_post->the_post();
-                   $portifolioId = "portifolioModal" . $i;
-                   ?>
-               
-                    <div class="col-md-6 col-lg-4 mb-5 ">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target=<?php echo "'#{$portifolioId}'"?>>
-                            <div  class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"><?php the_title(); ?></div>
-                            </div>
-                                <div class="row justify-content-center">
-                                    <?php the_post_thumbnail('thumbnail', array('style' => 'width:50%; height:auto')); ?>
+            <?php
+            if (have_posts()) {
+                while (have_posts()) {
+                    the_post();
+                    ?>
+                    <div class="row justify-content-center">
+                        <!-- Portfolio Item 1-->
+                        <div class="col-md-6 col-lg-4 mb-5">
+                            <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                                <div
+                                    class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div class="portfolio-item-caption-content text-center text-white"><i
+                                            class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                <?php echo the_title(); ?><br>
+                                <?php the_post_thumbnail('thumbnail',array('class'=>'img-fluid'));?>
+                              
+                            </div>
                         </div>
 
-                        
                     </div>
-
-                    <!-- Inicio Modal -->
-            <div class="portfolio-modal modal fade" id=<?php echo "'{$portifolioId}'"?> tabindex="-1" aria-labelledby="portfolioModal1"  aria-hidden="true">
+                </div>
+                
+           
+            <!-- Portfolio Modal 01-->
+            <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1"
+                aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal"
@@ -64,7 +68,7 @@ get_header();
                                 <div class="row justify-content-center">
                                     <div class="col-lg-8">
                                         <!-- Portfolio Modal - Title-->
-                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"><?php the_title(); ?></h2>
+                                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Log Cabin</h2>
                                         <!-- Icon Divider-->
                                         <div class="divider-custom">
                                             <div class="divider-custom-line"></div>
@@ -72,34 +76,35 @@ get_header();
                                             <div class="divider-custom-line"></div>
                                         </div>
                                         <!-- Portfolio Modal - Image-->
-                                        <?php the_post_thumbnail('thumbnail', array('class' => 'img-fluid rounded mb-5')); ?>
-                                      
-                                                        <!-- Portfolio Modal - Text-->
-                                                        <p class="mb-5"><?php the_content()?></p>
-                                                        <button class="btn btn-primary" data-bs-dismiss="modal">
-                                                            <i class="fas fa-xmark fa-fw"></i>
-                                                            Close Window
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <img class="img-fluid rounded mb-5"
+                                            src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/portfolio/cabin.png"
+                                            alt="..." />
+                                        <!-- Portfolio Modal - Text-->
+                                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque
+                                            assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                            velit
+                                            asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                        <button class="btn btn-primary" data-bs-dismiss="modal">
+                                            <i class="fas fa-xmark fa-fw"></i>
+                                            Close Window
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Fim Modal-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Portifolio item 1 fim-->
+            </div>
 
             <?php
-            $i++; }
-           }
-           ?>
+                }
+            } 
+            ?>
         </div>
 
-    </div>
-
-
 </section>
-
 <!-- About Section-->
 <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
@@ -132,6 +137,7 @@ get_header();
         </div>
     </div>
 </section>
+<!-- Contact Section-->
 <section class="page-section" id="contact">
     <div class="container">
         <!-- Contact Section Heading-->
@@ -210,4 +216,6 @@ get_header();
         </div>
     </div>
 </section>
+<!-- Footer-->
+
 <?php get_footer();
